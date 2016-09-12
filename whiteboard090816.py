@@ -104,6 +104,34 @@ def reverse(lst):
 
     return lst
 
+def phrase_to_piglatin(phrase):
+    """
+    Given a phrase, convert phrase to pig latin.
+    If word begins with a consenant, first letter moves to the end and add "-ay".
+    If word begins with a vowel, add -yay to the end of the word. 
+    >>> phrase_to_piglatin("Hello world")
+    'ellohay orldway'
+    >>> phrase_to_piglatin("Hello Elmo")
+    'ellohay elmoyay'
+
+    O(n)
+    """
+    
+    vowels = ['a','e','i','o','u']
+
+    words = phrase.lower().split(" ")
+
+    piglatin_list = []
+
+    for word in words:
+        if word[0] not in vowels:
+            piglatin = word[1:] + word[0] + 'ay'
+            piglatin_list.append(piglatin)
+        else:
+            piglatin = word + 'yay'
+            piglatin_list.append(piglatin)
+
+    return (" ").join(piglatin_list)
 
 def is_prime(num):
     """
@@ -121,7 +149,6 @@ def is_prime(num):
             return False
         else:
             return True
-
 
 if __name__ == "__main__":
     import doctest
