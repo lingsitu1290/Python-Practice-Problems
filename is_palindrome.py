@@ -12,6 +12,20 @@ def is_palindrome(string):
         return True
     return False
 
+def is_palindrome2(string):
+    """
+    Function to see if word is a palindrome. 
+    
+    >>> is_palindrome2("racecar")
+    True
+    >>> is_palindrome2("chicken")
+    False
+    """
+
+    for i in range(len(string)/2):
+        if string[i] != string[-i-1]:
+            return False
+    return True
 
 
 def is_palindrome_optimized(str1):
