@@ -10,6 +10,8 @@ def largest_cont_sum(lst):
     24
     >>> largest_cont_sum([-1,-2,-5,-1])
     -1
+    >>> largest_cont_sum([-5])
+    -5
     """
 
     # Edge case: if nothing in list
