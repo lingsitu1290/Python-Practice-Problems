@@ -70,7 +70,6 @@ class Queue():
     >>> q.enqueue('true')
     >>> q.dequeue()
     'hello'
-
     """
     def __init__(self):
         self.items = []
@@ -90,6 +89,44 @@ class Queue():
         return self.items.pop(0)
         # another possibility if insert was used above 
         # return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+
+
+class Deque():
+    """
+    >>> d = Deque()
+    >>> print d.size()
+    0
+
+    >>> d = Deque()
+    >>> d.isEmpty()
+    True
+
+    >>> d = Deque()
+    >>> d.addFront('hello')
+    >>> d.addRear('true')
+    >>> d.removeFront()
+    'hello'
+    """
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def addFront(self, item):
+        self.items.append(item)
+
+    def addRear(self, item):
+        self.items.insert(0,item)
+
+    def removeFront(self):
+        return self.items.pop()
+
+    def removeRear(self):
+        return self.items.pop(0)
 
     def size(self):
         return len(self.items)
