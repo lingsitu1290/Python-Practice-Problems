@@ -36,6 +36,24 @@ def get_product_list(lst):
         product_list.append(product)
     return product_list
 
+def get_products_of_all_ints_except_at_index_v2(lst):
+    """
+    >>> get_products_of_all_ints_except_at_index_v2([1, 7, 3, 4])
+    [84, 12, 28, 21]
+    """
+
+    result = []
+
+    for i, num in enumerate(lst):
+        total = 1
+        for j, num in enumerate(lst):
+            if j != i:
+                total *= lst[j]
+
+        result.append(total)
+
+    return result
+
 
 if __name__ == '__main__':
     import doctest
