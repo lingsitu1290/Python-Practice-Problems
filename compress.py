@@ -38,6 +38,53 @@ def compress(string):
 
     return compressed_string
 
+def compress_v2(string):
+    """
+    >>> compress_v2("aabcccccaaa")
+    'a2b1c5a3'
+    >>> compress_v2("aabbba")
+    'a2b3a1'
+    >>> compress_v2("abcdefg")
+    'a1b1c1d1e1f1g1'
+    >>> compress_v2("abcdddeff")
+    'a1b1c1d3e1f2'
+    >>> compress_v2("abcff")
+    'a1b1c1f2'
+    >>> compress_v2("a")
+    'a1'
+    >>> compress_v2("")
+    ''
+    """
+
+    result = ""
+
+    l = len(string)
+
+    # Edge cases
+    if l == 0:
+        return ""
+
+    if l == 1:
+        return string + "1"
+
+    last = string[0]
+    count = 1
+    i = 1
+
+    while i < l:
+        if string[i] == string[i-1]:
+            count += 1
+        else:
+            result = result + string[i-1] + str(count)
+            count = 1
+
+        i += 1
+
+    # For the last letter 
+    result = result + string[i-1] + str(count)
+
+    return result
+
 
 #################################################################################
 
