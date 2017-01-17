@@ -28,6 +28,31 @@ def binary_search(list, val, found=False):
 
     return found
 
+# Using Recursion
+def rec_binary_search(lst, val):
+    """
+    >>> rec_binary_search([1,2,3,4,5,6,7,8], 2)
+    True
+    >>> rec_binary_search([1,2,3,4,5,6,7,8], 11)
+    False
+    >>> rec_binary_search([1,2,3,4,5,6,7,8], 8)
+    True
+    """
+
+    if len(lst) == 0:
+        return False
+
+    mid = len(lst)/2
+
+    if lst[mid] == val:
+        return True
+
+    else:
+        if val < lst[mid]:
+            return rec_binary_search(lst[:mid], val)
+        else:
+            return rec_binary_search(lst[mid+1:], val)
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:
