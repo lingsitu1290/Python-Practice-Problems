@@ -1,4 +1,4 @@
-# Reverse strings 
+# Reverse strings
 
 def reverse(string):
     """
@@ -31,12 +31,12 @@ def reverse(string):
     """
     string1 = ""
 
-    for char in string: 
+    for char in string:
         string1 = char + string1
 
     return string1
 
-# Swtiching indexes
+# Swtiching indexes reverse in place without a temp variable 
 def reverse(string):
     """
     >>> reverse("sushi")
@@ -50,6 +50,22 @@ def reverse(string):
 
     return "".join(string_list)
 
+# Reverse in place Implemention #2 using a temp variable
+def reverse_2(string):
+    """
+    >>> reverse_2('moose')
+    'esoom'
+    """
+
+    string_list = list(string)
+    length = len(string)
+
+    for i in range(length/2):
+        temp = string_list[i]
+        string_list[i] = string_list[-i-1]
+        string_list[-i-1] = temp
+
+    return "".join(string_list)
 
 #################################################################################
 
