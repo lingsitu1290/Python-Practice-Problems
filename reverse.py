@@ -36,7 +36,7 @@ def reverse(string):
 
     return string1
 
-# Swtiching indexes reverse in place without a temp variable 
+# Swtiching indexes reverse in place without a temp variable
 def reverse(string):
     """
     >>> reverse("sushi")
@@ -66,6 +66,25 @@ def reverse_2(string):
         string_list[-i-1] = temp
 
     return "".join(string_list)
+
+# Third implementation of reverse in place difference in indexing
+def reverse_2(string):
+    """
+    >>> reverse_2('moose')
+    'esoom'
+    """
+
+    string_list = list(string)
+    length = len(string)
+
+    for i in range(length/2):
+        temp = string_list[i]
+        string_list[i] = string_list[length-1-i]
+        string_list[length-1-i] = temp
+
+    return "".join(string_list)
+
+
 
 #################################################################################
 
