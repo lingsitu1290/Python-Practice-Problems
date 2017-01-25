@@ -20,12 +20,14 @@ def is_anagram_of_palindrome(string):
     count = {}
 
     for word in string:
-        if word in count:
-            count[word] += 1
-        else:
-            count[word] = 1
+        count[word] = count.get(word, 0)+1
 
-    # Check if palindrome
+    # Without using .get
+    # for word in string:
+    #     if word in count:
+    #         count[word] += 1
+    #     else:
+    #         count[word] = 1
 
     odd_counts = 0
 
