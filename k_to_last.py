@@ -1,7 +1,7 @@
-""" 
+"""
 Cracking the Coding Interview LinkedList
 
-Implement an algorithm to find the kth to last element of a singly linked list. 
+Implement an algorithm to find the kth to last element of a singly linked list.
 """
 
 # Time: O(n)
@@ -35,6 +35,36 @@ def k_to_last(node, k):
     if k < len(node_list):
         return node_list[-k]
 
+def k_to_last_v2(node, k):
+    """
+    Finds and returns the kth to last element
+
+    >>> from linkedlist import *
+
+    >>> ll_example = LinkedList()
+    >>> ll_example.data_to_list([1,2,3,4,5,6,7,8,9,10])
+    >>> ll_example_result = k_to_last_v2(ll_example.head, 3)
+    >>> ll_example_result
+    Node(8)
+
+    >>> ll_example2 = LinkedList()
+    >>> ll_example2.data_to_list([1,2,3,4])
+    >>> ll_example_result2 = k_to_last_v2(ll_example2.head, 6)
+    >>> ll_example_result2
+    """
+
+    fast = slow = node
+
+    for i in range(k-1):
+
+        fast = fast.next
+
+    while fast.next:
+
+        slow = slow.next
+        fast = fast.next
+
+    return slow
 
 if __name__ == "__main__":
     import doctest
