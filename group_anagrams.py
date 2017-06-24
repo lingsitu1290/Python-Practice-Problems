@@ -23,6 +23,28 @@ def group_anagrams(lst):
     # Return list of anagrams
     print anagrams_dict.values()
 
+
+def group_anagrams2(lst):
+    """
+    Given a list of strings, group the strings that are anagrams of each other together.
+    >>> group_anagrams2(["cat", "dog", "god", "banana", "odg"])
+    [['banana'], ['dog', 'god', 'odg'], ['cat']]
+    >>> group_anagrams2(["tire", "iret", "sam", "ams", "car"])
+    [['tire', 'iret'], ['car'], ['sam', 'ams']]
+
+    Time: O(n)
+    """
+
+    # Dictionary comprehension
+    # d = {key: value for (key, value) in iterable} syntax
+    anagrams_dict = {"".join(sorted(word)): [] for word in lst}
+
+    for word in lst:
+        anagrams_dict["".join(sorted(word))].append(word)
+
+    # Return list of anagrams
+    print anagrams_dict.values()
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:
