@@ -80,11 +80,42 @@ def compress_v2(string):
 
         i += 1
 
-    # For the last letter 
+    # For the last letter
     result = result + string[i-1] + str(count)
 
     return result
 
+## This version only works IF same letters are clustered together
+import collections
+
+def compress_v3(string):
+    """
+    >>> compress_v3("aabccccc")
+    'a2b1c5'
+    >>> compress_v3("aabbb")
+    'a2b3'
+    >>> compress_v3("abcdefg")
+    'a1b1c1d1e1f1g1'
+    >>> compress_v3("abcdddeff")
+    'a1b1c1d3e1f2'
+    >>> compress_v3("abcff")
+    'a1b1c1f2'
+    >>> compress_v3("a")
+    'a1'
+    >>> compress_v3("")
+    ''
+    """
+
+    string_dict = collections.OrderedDict()
+    final = ""
+
+    for letter in string:
+        string_dict[letter] = string_dict.get(letter, 0)+1
+
+    for letter, count in string_dict.iteritems():
+        final += letter + str(count)
+
+    return final
 
 #################################################################################
 
