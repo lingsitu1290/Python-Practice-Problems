@@ -1,12 +1,12 @@
-# Hacker Rank Remove Duplicate Nodes 
+# Hacker Rank Remove Duplicate Nodes
 
 """
  Delete duplicate nodes
  head could be None as well for empty list
  Node is defined as
- 
+
  class Node(object):
- 
+
    def __init__(self, data=None, next_node=None):
        self.data = data
        self.next = next_node
@@ -28,6 +28,34 @@ def RemoveDuplicates(head):
         RemoveDuplicates(head.next)
     elif head.data == head.next.data:
         head.next = head.next.next
-        RemoveDuplicates(head)    
+        RemoveDuplicates(head)
     return head
-  
+
+
+# With buffer
+def RemoveDuplicatesV2(head):
+    previous = None
+    already_seen = set()
+    current = head
+
+    while current:
+        # First time seeing the node
+        if current.data not in already_seen:
+            already_seen.add(current.data)
+        else:
+            previous.next = current.next
+
+        previous = current
+        current = current.next
+
+# Without buffer
+def RemoveDuplicatesV3(head):
+    current = head
+    while current.next:
+        runner = current
+        while runner.next:
+            if current.value == runner.next.value:
+                runner.next = runner.next.next
+            else:
+                runner =runner.next
+        current = current.next
